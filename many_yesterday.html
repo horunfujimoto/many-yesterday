@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>一昨日よりもっと前はなんて言うん？？ツール</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #ffe6f2;
+            color: #ff1493;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        h2 {
+            background-color: #ffb6c1;
+            padding: 20px;
+            margin: 0 !important;
+            border-bottom: 2px solid #ff69b4;
+        }
+        label, input, button, h2, p {
+            display: block;
+            margin: 20px auto;
+        }
+        label, h2 {
+            font-size: 1.5em;
+        }
+        input {
+            font-size: 1.2em;
+            padding: 10px;
+            border: 2px solid #ff69b4;
+            border-radius: 10px;
+        }
+        button {
+            background-color: #ff69b4;
+            color: white;
+            font-size: 1.2em;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #ff1493;
+        }
+        #result {
+            font-size: 1.5em;
+            color: #c71585;
+            margin: 2%;
+            overflow-wrap: anywhere;
+        }
+    </style>
+    <script>
+        function convertToNennme() {
+            const input = document.getElementById("daysInput").value;
+            const days = parseInt(input, 10);
+
+            if (isNaN(days) || days < 1) {
+                document.getElementById("result").innerText = "正しい日数を入力してください。";
+                return;
+            }
+
+            let result;
+            if (days === 1) {
+                result = "昨日";
+            } else {
+                result = "一昨";
+                for (let i = 1; i < days - 1; i++) {
+                    result += "々";
+                }
+                result += "日";
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+</head>
+<body>
+    <h2>一昨日より前はなんて言うん？？</h2>
+    <label for="daysInput">何日前？</label>
+    <input type="number" id="daysInput" min="1">
+    <button onclick="convertToNennme()">変換だニャっ</button>
+    <h2>～結果～</h2>
+    <p id="result"></p>
+</body>
+</html>
+
